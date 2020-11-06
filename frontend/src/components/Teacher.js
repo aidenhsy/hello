@@ -7,12 +7,16 @@ const Teacher = ({ teacher }) => {
     <Jumbotron>
       <Row>
         <Col md={3}>
-          <Image src={teacher.image} fluid rounded />
+          <a href={`/teachers/${teacher._id}`}>
+            <Image src={teacher.image} fluid rounded />
+          </a>
         </Col>
         <Col md={6}>
           <ListGroup variant="flush" backgroundColor="none">
             <ListGroup.Item>
-              <h4>{teacher.name}</h4>
+              <a href={`/teachers/${teacher._id}`}>
+                <h4 style={{ color: "black" }}>{teacher.name}</h4>
+              </a>
             </ListGroup.Item>
             <ListGroup.Item>Subject: {teacher.subject}</ListGroup.Item>
             <ListGroup.Item>
