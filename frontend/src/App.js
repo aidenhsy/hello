@@ -13,6 +13,8 @@ const App = () => {
           <Route path="/users/:id" component={screens.UserDisplay} />
           <Route path="/cart/:id?" component={screens.Cart} />
           <Route path="/trial/:id" component={screens.Trial} />
+          <Route path="/login" component={screens.Login} />
+          <Route path="/register" component={screens.Register} />
         </Container>
       </main>
       <components.Footer />
