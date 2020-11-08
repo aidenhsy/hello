@@ -1,48 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../actions/cartActions";
 import { Button, Col, Image, ListGroup, Row, Form } from "react-bootstrap";
 
 const CartScreen = ({ location, match }) => {
   const dispatch = useDispatch();
-  const teacherId = match.params.id;
+  const userId = match.params.id;
   const qty = location.search && Number(location.search.split("=")[1]);
   useEffect(() => {
-    dispatch(addToCart(teacherId, qty));
+    dispatch(addToCart(userId, qty));
   });
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   return (
     <Row>
       <Col md={9}>
-        {cartItems.map((teacher) => (
+        {cartItems.map((user) => (
           <ListGroup.Item>
             <Row>
               <Col md={3}>
-                <a href={`/teachers/${teacher.teacher}`}>
-                  <Image src={teacher.image} fluid rounded />
+                <a href={`/users/${user._id}`}>
+                  <Image src={user.image} fluid rounded />
                 </a>
               </Col>
               <Col md={6}>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <h5>
-                      <strong>{teacher.name}</strong>
+                      <strong>{user.name}</strong>
                     </h5>
                   </ListGroup.Item>
-                  <ListGroup.Item>{teacher.subject}</ListGroup.Item>
                   <ListGroup.Item>
-                    Price: $ {teacher.price} / hour
+                    Subject : {user.subjectToTeach}
                   </ListGroup.Item>
+                  <ListGroup.Item>Price: $ {user.price} / hour</ListGroup.Item>
                   <ListGroup.Item>
                     <h5>
                       Hours booked:{" "}
                       <Form.Control
                         as="select"
-                        value={teacher.qty}
+                        value={user.qty}
                         style={{ width: "20%" }}
                         onChange={(e) =>
-                          dispatch(addToCart(teacher.teacher, e.target.value))
+                          dispatch(addToCart(user._id, e.target.value))
                         }
                       >
                         {[...Array(12).keys()].map((x) => (
@@ -65,8 +65,7 @@ const CartScreen = ({ location, match }) => {
               ${" "}
               {cartItems
                 .reduce(
-                  (accumulator, teacher) =>
-                    accumulator + teacher.qty * teacher.price,
+                  (accumulator, user) => accumulator + user.qty * user.price,
                   0
                 )
                 .toFixed(2)}

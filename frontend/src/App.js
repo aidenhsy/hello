@@ -10,8 +10,9 @@ const App = () => {
       <main className="my-3">
         <Container>
           <Route path="/" component={screens.Home} exact />
-          <Route path="/teachers/:id" component={screens.Teacher} />
+          <Route path="/users/:id" component={screens.UserDisplay} />
           <Route path="/cart/:id?" component={screens.Cart} />
+          <Route path="/trial/:id" component={screens.Trial} />
         </Container>
       </main>
       <components.Footer />

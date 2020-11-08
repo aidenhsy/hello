@@ -1,12 +1,12 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import Teacher from "./Teacher";
+import User from "./User";
 import Rating from "./Rating";
 
 const components = {
   Header,
   Footer,
-  Teacher,
+  User,
   Rating,
 };
 

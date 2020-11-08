@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-import teacherRoutes from "./routes/teacherRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 const app = express();
 
 dotenv.config();
@@ -11,4 +11,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`listening on ${PORT}`));
 
 app.use(express.json());
-app.use("/api/teachers", teacherRoutes);
+app.use("/api/users", userRoutes);

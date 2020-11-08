@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { teacherListReducer, teacherDetailsReducer } from "./teacherReducers";
+import { userListReducer, userDetailsReducer } from "./userReducers";
 import { cartReducer } from "./cartReducers";
 
 const allReducers = combineReducers({
-  teacherList: teacherListReducer,
-  teacherDetails: teacherDetailsReducer,
+  userList: userListReducer,
+  userDetails: userDetailsReducer,
   cart: cartReducer,
 });
 
